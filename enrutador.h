@@ -4,6 +4,7 @@
 #include <map>
 #include <iostream>
 #include <fstream>
+#include <stdlib.h>
 using namespace std;
 
 class Enrutador
@@ -17,6 +18,7 @@ public:
     bool Modificar_Enlace(char nombre,int value);
     void Imprimir();
     void Matriz_Ady();
+    int DijKstra(int **matriz,char **Matriz2, int, int,char *definitivos);
 };
 
 #endif // ENRUTADOR_H

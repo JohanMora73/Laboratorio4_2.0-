@@ -14,6 +14,8 @@ public:
      void Leer_Archivo(string archivo);
      void Imprimir_TEnrutamiento(char nombre);
      void Matriz_Adyasencia();
+     int Contar_Nodos();
+     void Dijkstra(int **matriz,char**Matriz2, int n,char *definitivos);
 };
 
 #endif // RED_H
