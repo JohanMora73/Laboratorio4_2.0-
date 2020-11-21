@@ -109,6 +109,8 @@ void Red::Leer_Archivo(string archivo)
 
 
     }
+    for(it=net.begin();it!=net.end();it++){
+    }
 
 }
 
@@ -152,8 +154,64 @@ void Red::Dijkstra(int **matriz, char **Matriz2, int n,char *definitivos)
         menor=net[Nd].DijKstra(matriz,Matriz2,menor,i,definitivos);
 
     }
-    //cout<<"menor: "<<menor<<endl;
-    //for(int i=0;i<n;i++){
-    //cout<<"Definitivo "<<i<<": "<<definitivos[i]<<endl;
-    //}
+}
+
+void Red::red_aleatoria(string nombre_a, char letra, int nodos)
+{
+    int n=nodos;
+    vector<char> letras (nodos);
+    char letra_aux;
+    letras[0]=letra;
+    fstream archivo(nombre_a,fstream::out);// Se abre o crea el archivo en modo escritura
+    srand(time(NULL));
+    for(int i=0;i<=nodos;i++){
+        letra_aux=generar_letra();
+        while (letra==letra_aux) {
+            letra_aux=generar_letra();
+        }
+        for(int j=0;j<n-1;j++){
+            if(letras[j]!=letra_aux){
+                if(letras[i]!=letra_aux) letras[i+1]=letra_aux;
+                letra=letra_aux;
+            }
+        }
+    }
+
+    int j=0;
+    for(int i=0; i<n;i++){
+        if(i==0){
+            archivo<<letras[i]<<' '<<letras[i+1]<<' '<<generar_numero();
+        }
+        if(i==n-1) {
+            archivo<<'\n'<<letras[i]<<' '<<letras[i-(n/2)]<<' '<<generar_numero();
+            break;}
+        archivo<<'\n'<<letras[i]<<' '<<letras[i+1]<<' '<<generar_numero();
+
+        j=i;
+        while (j==i && i+2<n-1) {
+            archivo<<'\n'<<letras[i]<<' '<<letras[i+2]<<' '<<generar_numero();
+            j++;
+
+        }
+
+    }
+    archivo.close();
+}
+char Red::generar_letra()
+{
+    char letra;
+    int al;
+    al = rand () % (1-0+1) + 0;
+    if(al==0) letra= rand () % (90-66) + 65;
+    else letra = rand () % (122-98) + 97;
+    //srand(time(NULL));
+    //letra = rand () % (90-65+1) + 65;   // Este está entre M y N
+    //letra=65+rand()%(90-65);
+    return letra;
+}
+int Red::generar_numero()
+{
+    int num;
+    num=rand()%101;
+    return num;
 }

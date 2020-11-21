@@ -16,6 +16,10 @@ public:
      void Matriz_Adyasencia();
      int Contar_Nodos();
      void Dijkstra(int **matriz,char**Matriz2, int n,char *definitivos);
+     void red_aleatoria(string nombre_a, char letra, int nodos);
+     char generar_letra();
+     int generar_numero();
+     //void Red_Aleatoria(int nodos, char *Lista1,char *Lista2);
 };
 
 #endif // RED_H

@@ -2,9 +2,12 @@
 #define ENRUTADOR_H
 #include <iostream>
 #include <map>
-#include <iostream>
 #include <fstream>
 #include <stdlib.h>
+#include <ctime>
+#include<cmath>
+#include <vector>
+
 using namespace std;
 
 class Enrutador

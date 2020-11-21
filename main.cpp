@@ -19,9 +19,19 @@ int main()
             cout<<"Digite el nombre del archivo con la extencion: "<<endl;
             cin>>archivo;
             red.Leer_Archivo(archivo);
+
         break;
 
         default:
+        char letra;
+            int n=30;
+            do{
+                cout<<"Digite el numero de nodos que van a componer su red: "<<endl;
+                cin>>n;
+            } while(n>26);
+            letra=red.generar_letra();
+            red.red_aleatoria("Aleatoria.txt",letra,n);
+            red.Leer_Archivo("Aleatoria.txt");
         break;
     }
         while(true){
@@ -57,7 +67,7 @@ int main()
 
                 default:
                     char No, Nd;
-                    int posicion=0,menor,cont=0;
+                    int posicion=0,menor,cont=0,menordef;
                     bool resp=false;
                     n=red.Contar_Nodos();
                     definitivos=new char [n];
@@ -89,13 +99,17 @@ int main()
                                 menor=num;
                                 Nodo=Matriz2[i][posicion];
                                 ruta[k]=Nodo;
-                                if(k==1) cout<<endl<<"El costo minimo es: "<<menor<<endl;
+
+                                if(k==1) menordef=menor;
+
                             }
                         }
+                        if(k==1) cout<<endl<<"El costo minimo es: "<<menordef<<endl;
                         posicion=Posicion_Nodo(definitivos,n,Nodo,ruta,cont);
                         if(posicion==0) resp=true;
                         k+=1;
                     }
+                    ruta[0]=Nd;
                     cout<<"La mejor ruta es: ";
                     Iimprimir_Ruta(definitivos,ruta,n);
                     cout<<endl<<endl;
